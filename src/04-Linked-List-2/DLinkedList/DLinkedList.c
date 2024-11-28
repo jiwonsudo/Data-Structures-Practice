@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include "DLinkedList.h"
 
-void ListInit(List * plist)
+void ListInit(List * plist)  // 리스트 초기화
 {
-	plist->head = (Node*)malloc(sizeof(Node));  // 더미 노드의 생성
+	plist->head = (Node*)malloc(sizeof(Node));  // 더미 노드 생성 (=head 노드)
 	plist->head->next = NULL;
 	plist->comp = NULL;
 	plist->numOfData = 0;
 }
 
-void FInsert(List * plist, LData data)
+void FInsert(List * plist, LData data)  // 첫 번째 노드 생성 (dummy)
 {
 	Node * newNode = (Node*)malloc(sizeof(Node));  // 새 노드 생성
 	newNode->data = data;  // 새 노드에 데이터 저장
@@ -21,7 +21,7 @@ void FInsert(List * plist, LData data)
 	(plist->numOfData)++;  // 저장된 노드의 수를 하나 증가
 }
 
-void SInsert(List * plist, LData data)
+void SInsert(List * plist, LData data)  // 두 번째 이후 노드 생성
 {
 	Node * newNode = (Node*)malloc(sizeof(Node));
 	Node * pred = plist->head;
@@ -50,39 +50,39 @@ void LInsert(List * plist, LData data)
 
 int LFirst(List * plist, LData * pdata)
 {
-	if(plist->head->next == NULL)
-		return FALSE;
+	if(plist->head->next == NULL)  // 더미 노드(head)->next가 NULL이라면
+		return FALSE;  // 반환할 데이터가 없음
 
-	plist->before = plist->head;
-	plist->cur = plist->head->next;
+	plist->before = plist->head;  // before은 더미 노드를 가리키게 함
+	plist->cur = plist->head->next;  // cur은 첫 번째 노드를 가리키게 함
 
-	*pdata = plist->cur->data;
+	*pdata = plist->cur->data;  // 첫 번째 노드의 데이터 전달
 	return TRUE;
 }
 
 int LNext(List * plist, LData * pdata)
 {
-	if(plist->cur->next == NULL)
-		return FALSE;
+	if(plist->cur->next == NULL)  // curr->next가 NULL이라면
+		return FALSE;  // 반환할 데이터가 없음
 
-	plist->before = plist->cur;
-	plist->cur = plist->cur->next;
+	plist->before = plist->cur;  // cur이 가리키던 것을 before이 가리키도록
+	plist->cur = plist->cur->next;  // cur은 현재 cur의 next를 가리킴
 
-	*pdata = plist->cur->data;
+	*pdata = plist->cur->data;  // cur이 가리키는 노드의 데이터 전달
 	return TRUE;
 }
 
 LData LRemove(List * plist)
 {
-	Node * rpos = plist->cur;
-	LData rdata = rpos->data;
+	Node * rpos = plist->cur;  // 소멸 대상 노드(cur)의 주소값을 rpos 노드에 저장
+	LData rdata = rpos->data;  // 소멸 대상 노드의 데이터를 rdata에 저장
 
-	plist->before->next = plist->cur->next;
-	plist->cur = plist->before;
+	plist->before->next = plist->cur->next;  // before->next를 cur->next로 변경, 소멸 대상 노드를 누락시킴
+	plist->cur = plist->before;  // cur을 before로 이동
 
-	free(rpos);
-	(plist->numOfData)--;
-	return rdata;
+	free(rpos);  // 리스트에서 누락시킨 노드를 삭제
+	(plist->numOfData)--;  // 저장된 데이터 수 1 감소
+	return rdata;  // 제거된 노드 데이터 반환
 }
 
 int LCount(List * plist)
@@ -93,4 +93,18 @@ int LCount(List * plist)
 void SetSortRule(List * plist, int (*comp)(LData d1, LData d2))
 {
 	plist->comp = comp;
+}
+
+// 조회 함수
+void PrintAllItems(List *plist) {
+	LData data;
+	
+	if (LFirst(plist, &data)) {
+		printf("%d ", data);
+		
+		while (LNext(plist, &data)) {
+			printf("%d ", data);
+		}
+	}
+	puts("");
 }
