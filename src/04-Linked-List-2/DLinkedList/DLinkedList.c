@@ -4,7 +4,7 @@
 
 void ListInit(List * plist)
 {
-	plist->head = (Node*)malloc(sizeof(Node));
+	plist->head = (Node*)malloc(sizeof(Node));  // 더미 노드의 생성
 	plist->head->next = NULL;
 	plist->comp = NULL;
 	plist->numOfData = 0;
@@ -12,13 +12,13 @@ void ListInit(List * plist)
 
 void FInsert(List * plist, LData data)
 {
-	Node * newNode = (Node*)malloc(sizeof(Node));
-	newNode->data = data;
+	Node * newNode = (Node*)malloc(sizeof(Node));  // 새 노드 생성
+	newNode->data = data;  // 새 노드에 데이터 저장
 
-	newNode->next = plist->head->next;
-	plist->head->next = newNode;
+	newNode->next = plist->head->next;  // 새 노드가 다른 노드를 가리키게 함
+	plist->head->next = newNode;  // 더미 노드가 새노드를 가리키게 함
 
-	(plist->numOfData)++;
+	(plist->numOfData)++;  // 저장된 노드의 수를 하나 증가
 }
 
 void SInsert(List * plist, LData data)
@@ -42,10 +42,10 @@ void SInsert(List * plist, LData data)
 
 void LInsert(List * plist, LData data)
 {
-	if(plist->comp == NULL)
-		FInsert(plist, data);
-	else
-		SInsert(plist, data);
+	if(plist->comp == NULL)  // 정렬기준이 마련되지 않았다면 (comp == NULL)
+		FInsert(plist, data);  // 머리에 노드 추가
+	else  // 정렬기준이 마련되었다면
+		SInsert(plist, data);  // 정렬기준에 근거하여 노드 추가
 }
 
 int LFirst(List * plist, LData * pdata)
