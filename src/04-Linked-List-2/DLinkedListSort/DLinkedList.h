@@ -38,5 +38,7 @@ void SetSortRule(List * plist, int (*comp)(LData d1, LData d2));
 
 // 조회함수
 void PrintAllItems(List *plist);
+// 삭제함수
+LData LDelete(List *plist, LData dataToDelete);
 
 #endif

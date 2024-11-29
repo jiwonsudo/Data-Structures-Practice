@@ -109,3 +109,20 @@ void PrintAllItems(List *plist) {
 	}
 	puts("");
 }
+
+// 삭제 함수
+LData LDelete(List *plist, LData dataToDelete) {
+	LData data;
+	
+	if (LFirst(plist, &data)) {
+		if (data == dataToDelete) {
+			return LRemove(plist);
+		}
+		while (LNext(plist, &data)) {
+			if (data == dataToDelete) {
+				return LRemove(plist);
+			}
+		}
+	}
+	return FALSE;
+}

@@ -22,14 +22,12 @@ int main() {
 	printf("현재 데이터 수: %d\n", LCount(&list));
 	printf("현재 데이터: "); PrintAllItems(&list);
 	
-	if (LFirst(&list, &data)) {
-		if (data == 33)
-			LRemove(&list);
-		while (LNext(&list, &data)) {
-			if (data == 33)
-				LRemove(&list);
-		}
-	}	
+	LDelete(&list, 33);	
+	
+	printf("현재 데이터 수: %d\n", LCount(&list));
+	printf("현재 데이터: "); PrintAllItems(&list);
+	
+	LDelete(&list, 22);
 	
 	printf("현재 데이터 수: %d\n", LCount(&list));
 	printf("현재 데이터: "); PrintAllItems(&list);
