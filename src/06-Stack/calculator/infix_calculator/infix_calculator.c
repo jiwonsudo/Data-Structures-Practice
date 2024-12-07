@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
-#include "infix_to_postfix.h"
-#include "post_calculator.h"
+#include "../infix_to_postfix/infix_to_postfix.h"
+#include "../post_calculator/post_calculator.h"
 
 int EvalInfixExp(char exp[]) {
 	int len = strlen(exp);

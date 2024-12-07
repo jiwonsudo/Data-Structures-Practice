@@ -1,6 +1,6 @@
 #include <string.h>
 #include <ctype.h>
-#include "list_based_stack.h"
+#include "../list_based_stack/list_based_stack.h"
 
 int EvalRPNExp(char exp[]) {
 	Stack stack;

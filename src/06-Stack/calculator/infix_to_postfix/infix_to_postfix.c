@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "list_based_stack.h"
-#include "infix_to_postfix.h"
+#include "../list_based_stack/list_based_stack.h"
+#include "../infix_to_postfix/infix_to_postfix.h"
 
 int GetOpPrec(char op) {
 	switch(op) {
