@@ -19,6 +19,7 @@ int IsDequeEmpty(Deque *pdeq) {
 void Insert(Deque *pdeq, Data data) {
 	Node *new_node = (Node*)malloc(sizeof(Node));
 	new_node->data = data;
+	
 	new_node->next = pdeq->head;
 	
 	if(IsDequeEmpty(pdeq)) {
@@ -34,6 +35,7 @@ void Insert(Deque *pdeq, Data data) {
 void Append(Deque *pdeq, Data data) {
 	Node *new_node = (Node*)malloc(sizeof(Node));
 	new_node->data = data;
+	
 	new_node->prev = pdeq->tail;
 	
 	if(IsDequeEmpty(pdeq)) {
@@ -51,7 +53,7 @@ Data Remove(Deque *pdeq) {
 	Data data_to_rm;
 	if(IsDequeEmpty(pdeq)) ExitWithError("Can't Remove 1st node from empty deque.");
 	
-	data_to_rm = node_to_rm->data;
+	data_to_rm = pdeq->head->data;
 	pdeq->head = pdeq->head->next;
 	free(node_to_rm);
 	
@@ -69,7 +71,7 @@ Data Pop(Deque *pdeq) {
 	Data data_to_rm;
 	if(IsDequeEmpty(pdeq)) ExitWithError("Can't Pop last node from empty deque.");
 	
-	data_to_rm = node_to_rm->data;
+	data_to_rm = pdeq->tail->data;
 	pdeq->tail = pdeq->tail->prev;
 	free(node_to_rm);
 	

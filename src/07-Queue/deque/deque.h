@@ -6,19 +6,21 @@
 
 typedef int Data;
 
-typedef struct Node {
+typedef struct _node {
 	Data data;
-	struct Node *next;
-	struct Node *prev;
+	struct _node *next;
+	struct _node *prev;
 } Node;
 
-typedef struct Deque {
+typedef struct _deque {
 	Node *head;
 	Node *tail;
 } Deque;
 
 void DequeInit(Deque *pdeq);
 int IsDequeEmpty(Deque *pdeq);
+
+void ExitWithError(char msg[]);
 
 void Insert(Deque *pdeq, Data data);  // add data at head
 void Append(Deque *pdeq, Data data);  // add data at tail
@@ -28,7 +30,5 @@ Data Pop(Deque *pdeq);  // remove & return last data
 
 Data PeekHead(Deque *pdeq);
 Data PeekTail(Deque *pdeq);
-
-void ExitWithError(char msg[]);
 
 #endif
