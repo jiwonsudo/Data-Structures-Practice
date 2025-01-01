@@ -60,7 +60,7 @@ Data Remove(Deque *pdeq) {
 	if(pdeq->head == NULL) {
 		pdeq->tail = NULL;
 	} else {
-		pdeq->head->prev == NULL;
+		pdeq->head->prev = NULL;
 	}
 	
 	return data_to_rm;
@@ -75,10 +75,10 @@ Data Pop(Deque *pdeq) {
 	pdeq->tail = pdeq->tail->prev;
 	free(node_to_rm);
 	
-	if(pdeq->tail = NULL) {
+	if(pdeq->tail == NULL) {
 		pdeq->head = NULL;
 	} else {
-		pdeq->tail->next == NULL;
+		pdeq->tail->next = NULL;
 	}
 	
 	return data_to_rm;
