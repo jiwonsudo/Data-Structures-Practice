@@ -9,6 +9,22 @@ void InOrderTraverse(BTNode *bt) {
 	InOrderTraverse(bt->right);  // recurse right tree
 }
 
+void PreOrderTraverse(BTNode *bt) {
+	if(bt == NULL) return;
+	
+	printf("%d\n", bt->data);
+	PreOrderTraverse(bt->left);
+	PreOrderTraverse(bt->right);
+}
+
+void PostOrderTraverse(BTNode *bt) {
+	if(bt == NULL) return;
+	
+	PostOrderTraverse(bt->left);
+	PostOrderTraverse(bt->right);
+	printf("%d\n", bt->data);
+}
+
 int main() {
 	BTNode *bt1 = MakeBTNode();
 	BTNode *bt2 = MakeBTNode();
