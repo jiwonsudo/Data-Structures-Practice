@@ -1,15 +1,15 @@
 #include <stdio.h>
 
-int binSearch(int arr[], int start, int end, int tgt, int *count) {
+int BinSearch(int arr[], int start, int end, int tgt, int *count) {
 	(*count)++;
 	if (start > end) return -1;  // 만약 시작수가 종료수보다 크다면 탐색 실패이므로 -1을 반환
 	int mid = (start + end) / 2;
 	if (arr[mid] == tgt) {
 		return mid;
 	} else if (arr[mid] > tgt) {  // 중앙값이 탐색목표보다 크다면 처음~중앙 재귀로 탐색
-		return binSearch(arr, start, mid - 1, tgt, count);
+		return BinSearch(arr, start, mid - 1, tgt, count);
 	} else if (arr[mid] < tgt) {  // 중앙값이 탐색목표보다 작다면 중앙~끝 재귀로 탐색
-		return binSearch(arr, mid + 1, end, tgt, count);
+		return BinSearch(arr, mid + 1, end, tgt, count);
 	}
 }
 
@@ -19,7 +19,7 @@ void main() {
 	int target = 5;
 	int count = 0;
 	
-	idx = binSearch(arr, 0, sizeof(arr) / sizeof(int) - 1, target, &count);
+	idx = BinSearch(arr, 0, sizeof(arr) / sizeof(int) - 1, target, &count);
 	
 	if (idx == -1) {
 		printf("탐색 대상 '%d'이(가) 배열에 없음. 탐색횟수: %d\n", target, count);
