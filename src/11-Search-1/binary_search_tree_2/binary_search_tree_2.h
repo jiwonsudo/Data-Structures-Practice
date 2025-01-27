@@ -20,9 +20,4 @@ BTNode *Search(BTNode *bst, bst_data target);
 // feat: remove node from tree and return its address value
 BTNode *Remove(BTNode **p_root, bst_data target);
 
-void ShowIntData(int data);
-
-// print all data of every nodes saved in binary search tree
-void ShowAllData(BTNode *bst);
-
 #endif

@@ -65,3 +65,11 @@ BTNode *RemoveRST(BTNode *bt) {
 
 void ChangeLST(BTNode *main, BTNode *sub) { main->left = sub; }
 void ChangeRST(BTNode *main, BTNode *sub) { main->right = sub; }
+
+void ShowIntData(int data) {
+	printf("%d ", data);
+}
+
+void ShowAllData(BTNode *bst) {
+	InTrav(bst, ShowIntData);
+}

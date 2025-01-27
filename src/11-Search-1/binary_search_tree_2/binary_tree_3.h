@@ -31,4 +31,9 @@ BTNode *RemoveRST(BTNode *bt);
 void ChangeLST(BTNode *main, BTNode *sub);
 void ChangeRST(BTNode *main, BTNode *sub);
 
+void ShowIntData(int data);
+
+// print all data of every nodes saved in binary search tree
+void ShowAllData(BTNode *bst);
+
 #endif

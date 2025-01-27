@@ -146,10 +146,3 @@ BTNode *Remove(BTNode **p_root, bst_data target) {
 	return d_node;  // return target(deleted)
 }
 
-void ShowIntData(int data) {
-	printf("%d ", data);
-}
-
-void ShowAllData(BTNode *bst) {
-	InTrav(bst, ShowIntData);
-}
